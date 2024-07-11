@@ -36,12 +36,7 @@
   </div>
 </template>
 <script setup lang="ts">
-const hideDrawer = () => {
-  const drawer = document.getElementById('my-drawer-2') as HTMLInputElement;
-  if (drawer) {
-    drawer.checked = false;
-  }
-};
+
 </script>
 
 <style scoped>
