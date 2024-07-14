@@ -30,7 +30,7 @@
               </div>
             </li>
           </RouterLink>
-          <RouterLink to="/todo">
+          <RouterLink to="/todos">
             <li>
               <div>
                 <PencilIcon class="size-4" />Todo
