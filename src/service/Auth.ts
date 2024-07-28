@@ -1,3 +1,4 @@
+import { error } from "console";
 import router from "../config/routes"; // Assuming router is properly configured in router.ts
 import axios from "axios";
 
@@ -16,17 +17,19 @@ class AuthService {
   };
 
   public async login(credentials: Credentials): Promise<any> {
-    try {
-    const response = await axios.post('http://127.0.0.1:3000/api/auth',credentials)
-      console.log('Login successful:', response.data)
-      localStorage.setItem('token', response.data.data.token);
-      this.user.authenticated = true;
+   
+ return axios.post('http://127.0.0.1:3000/api/auth',credentials).then((data)=>{
 
-        router.push('/') // Replace with your actual route
-      } catch (error) {
-        console.log(error)
-        return error
-      } 
+        localStorage.setItem('token',  data.data.token);
+        this.user.authenticated = true;
+        router.push('/')
+    }).catch((error)=>{
+        console.log(error.response.data)
+    })
+  // Replace with your actual route
+       
+     
+      
   }
 
   public logout(): void {

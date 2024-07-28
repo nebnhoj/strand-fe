@@ -4,18 +4,20 @@
       <h2 class="text-2xl font-bold text-center">Login</h2>
       <form @submit.prevent="login">
         <div class="form-control">
-
+          <label class="label">
+            <span class="label-text text-error" v-if="loginError">{{ loginError }}</span>
+          </label>
           <label class="label">
             <span class="label-text">Email</span>
           </label>
-          <Input type="email" v-model="cred.email" class="input input-bordered" required />
+          <Input type="email" v-model="cred.email" class="" required />
           
         </div>
         <div class="form-control">
           <label class="label">
             <span class="label-text">Password</span>
           </label>
-          <input type="password" v-model="cred.password" class="input input-bordered" required />
+          <Input type="password" v-model="cred.password" class="" required />
         </div>
         <div class="form-control mt-6">
           <button class="btn btn-primary" :disabled="loading">Login</button>
@@ -40,7 +42,7 @@ const cred = ref<Credentials>({
 })
 const loading = ref<boolean>(false)
 const router = useRouter()
-
+const loginError = ref<string | null>(null)
 const login = async () => {
   loading.value = true
   try {

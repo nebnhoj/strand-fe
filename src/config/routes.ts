@@ -5,9 +5,10 @@ import Settings from ".././components/pages/Settings.vue";
 import Dashboard from ".././components/pages/Dashboard.vue";
 import Login from "../components/pages/Login.vue";
 import Wrapper from "../components/Wrapper.vue";
-
 import auth from '../service/Auth';
-const routes = [
+import { UserIcon, PencilIcon, CogIcon, ChartBarIcon } from '@heroicons/vue/24/outline'
+
+export const routes = [
   { path: "/", 
     component: Wrapper,
     children: [
@@ -15,24 +16,29 @@ const routes = [
           path: '',
           name: 'Dashboard',
           component: Dashboard,
+          icon: ChartBarIcon,
           auth: true
         },
         {
           path: 'users',
           name: 'Users',
           component: User,
+          icon: UserIcon,
+
           auth: true
         },
         {
           path: 'todos',
           name: 'Todos',
           component: Todo,
+          icon: PencilIcon,
           auth: true
         },
         {
           path: 'settings',
           name: 'Settings',
           component: Settings,
+          icon: CogIcon,
           auth: true
         }
       ]
@@ -40,7 +46,6 @@ const routes = [
   { path: "/login", component: Login },
    
 ];
-
 const router = createRouter({
   history: createMemoryHistory(),
   
